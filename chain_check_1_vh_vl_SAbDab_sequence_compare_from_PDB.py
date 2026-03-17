@@ -18,13 +18,10 @@
 取链策略（按优先级，严格区分大小写）：
 1) 全局 display FASTA：/fasta/entry/{pdb}/display
    - 先严格匹配 “[auth X]”（X = chainId）
-   - 若命中：取对应 entry 序列
-2) 若 1) 没命中，再尝试“链字母本身”（label chain）：
-   - 在全局 display FASTA 的 header 中用 “Chain(s) X” 匹配（X = chainId）
-   - 若命中：取对应 entry 序列
-3) 若 2) 仍没命中，再请求 display?chainId=X：
-   - 若返回只有 1 条非空 entry：取回（fallback）
-   - 若返回多条：再用 “Chain(s) X” 匹配
+2) 若没命中，再用 “Chain(s) X” 匹配（严格大小写）
+3) 再不行用 display?chainId=X fallback：
+   - 若仅 1 条非空 entry：直接取
+   - 否则再用 “Chain(s) X” 匹配
 4) 都失败：NO_PDB
 
 输出：
@@ -43,7 +40,7 @@
 from __future__ import annotations
 
 import csv
-import html
+import html as html_mod
 import json
 import re
 import sys
@@ -166,7 +163,6 @@ CHAIN_PATTERNS = [
 
 
 def header_mentions_auth_chain(header: str, auth_chain: str) -> bool:
-    """严格匹配 [auth X]，区分大小写（X 必须与 CSV 完全一致）"""
     h = header or ""
     c = (auth_chain or "").strip()
     if not c:
@@ -176,7 +172,6 @@ def header_mentions_auth_chain(header: str, auth_chain: str) -> bool:
 
 
 def header_mentions_chain_letter(header: str, chain_letter: str) -> bool:
-    """label chain 匹配：匹配 “Chain(s) X”，区分大小写（X 必须与 CSV 完全一致）"""
     h = header or ""
     c = (chain_letter or "").strip()
     if not c:
@@ -218,7 +213,6 @@ def fetch_chain_sequence(pdb_id: str, chain: str, session: requests.Session) -> 
         return ChainSeqResult(pdb_id=pdb_id, chain_id=chain, found=False, reason="bad_pdb_id")
 
     try:
-        # Step 1: 全局 display FASTA
         url_full = FASTA_DISPLAY_URL_TMPL.format(pdb_id=pdb_id)
         r_full = http_get_with_retry(url_full, session=session)
         if r_full.status_code == 404:
@@ -229,29 +223,14 @@ def fetch_chain_sequence(pdb_id: str, chain: str, session: requests.Session) -> 
 
         entries_full = parse_fasta(r_full.text)
 
-        # 1a) 严格 auth 匹配
         seq_auth = pick_by_auth(entries_full, chain)
         if seq_auth:
-            return ChainSeqResult(
-                pdb_id=pdb_id,
-                chain_id=chain,
-                found=True,
-                sequence=seq_auth,
-                reason="full_display_auth_matched",
-            )
+            return ChainSeqResult(pdb_id=pdb_id, chain_id=chain, found=True, sequence=seq_auth, reason="full_display_auth_matched")
 
-        # 1b) auth 没命中 -> label chain
         seq_label = pick_by_chain_letter(entries_full, chain)
         if seq_label:
-            return ChainSeqResult(
-                pdb_id=pdb_id,
-                chain_id=chain,
-                found=True,
-                sequence=seq_label,
-                reason="full_display_chain_letter_matched",
-            )
+            return ChainSeqResult(pdb_id=pdb_id, chain_id=chain, found=True, sequence=seq_label, reason="full_display_chain_letter_matched")
 
-        # Step 2: chainId fallback
         url_chain = f"https://www.rcsb.org/fasta/entry/{pdb_id}/display?chainId={chain}"
         r_chain = http_get_with_retry(url_chain, session=session)
         if r_chain.status_code == 404:
@@ -357,21 +336,21 @@ def make_colored_lines(local_block: str, pdb_block: str) -> Tuple[str, str, str]
 
     for v, p in zip(local_block, pdb_block):
         if v == p and v != "-":
-            local_spans.append(f'<span class="match">{html.escape(v)}</span>')
-            pdb_spans.append(f'<span class="match">{html.escape(p)}</span>')
+            local_spans.append(f'<span class="match">{html_mod.escape(v)}</span>')
+            pdb_spans.append(f'<span class="match">{html_mod.escape(p)}</span>')
             mid.append("|")
         elif v == "-" or p == "-":
             vcls = "gap" if v == "-" else "insdel"
             pcls = "gap" if p == "-" else "insdel"
-            local_spans.append(f'<span class="{vcls}">{html.escape(v)}</span>')
-            pdb_spans.append(f'<span class="{pcls}">{html.escape(p)}</span>')
+            local_spans.append(f'<span class="{vcls}">{html_mod.escape(v)}</span>')
+            pdb_spans.append(f'<span class="{pcls}">{html_mod.escape(p)}</span>')
             mid.append(" ")
         else:
-            local_spans.append(f'<span class="mismatch">{html.escape(v)}</span>')
-            pdb_spans.append(f'<span class="mismatch">{html.escape(p)}</span>')
+            local_spans.append(f'<span class="mismatch">{html_mod.escape(v)}</span>')
+            pdb_spans.append(f'<span class="mismatch">{html_mod.escape(p)}</span>')
             mid.append(".")
 
-    return "".join(local_spans), "".join(pdb_spans), html.escape("".join(mid))
+    return "".join(local_spans), "".join(pdb_spans), html_mod.escape("".join(mid))
 
 
 def render_alignment_html(local_aln: str, pdb_aln: str, wrap: int) -> str:
@@ -405,6 +384,7 @@ def make_index_html(items: List[dict], wrap: int, title_text: str) -> str:
             }
         )
 
+    # 放到 application/json，避免 <script> 直接内联 JSON 引发的解析问题
     data_json = json.dumps(rendered, ensure_ascii=False)
 
     css = """
@@ -425,18 +405,28 @@ def make_index_html(items: List[dict], wrap: int, title_text: str) -> str:
     .insdel { color: #0b57d0; font-weight: 700; }
     .mid { color: #666; }
     .hint { color: #666; font-size: 12px; }
+    .errorbox { color: #b00020; white-space: pre-wrap; border: 1px solid #f1b; padding: 10px; border-radius: 8px; }
     """
 
     js = """
-    const items = __DATA__;
+    let items = [];
     let idx = 0;
+
+    function showError(err) {
+      const box = document.getElementById('content');
+      box.innerHTML = '';
+      const pre = document.createElement('pre');
+      pre.className = 'errorbox';
+      pre.textContent = String(err && err.stack ? err.stack : err);
+      box.appendChild(pre);
+    }
 
     function render() {
       const it = items[idx];
-      document.getElementById('title').textContent = it.title;
-      document.getElementById('meta').textContent = it.meta;
-      document.getElementById('stats').textContent = it.stats;
-      document.getElementById('content').innerHTML = it.html;
+      document.getElementById('title').textContent = it.title ?? '';
+      document.getElementById('meta').textContent = it.meta ?? '';
+      document.getElementById('stats').textContent = it.stats ?? '';
+      document.getElementById('content').innerHTML = (typeof it.html === 'string') ? it.html : String(it.html);
       document.getElementById('counter').textContent = `${idx+1} / ${items.length}`;
       document.getElementById('sel').value = String(idx);
     }
@@ -445,50 +435,55 @@ def make_index_html(items: List[dict], wrap: int, title_text: str) -> str:
     function prev() { if (idx > 0) { idx--; render(); } }
 
     function init() {
-      const sel = document.getElementById('sel');
-      items.forEach((it, i) => {
-        const opt = document.createElement('option');
-        opt.value = String(i);
-        opt.textContent = `${i+1}. ${it.title}`;
-        sel.appendChild(opt);
-      });
-      sel.addEventListener('change', (e) => {
-        idx = parseInt(e.target.value, 10);
+      try {
+        const raw = document.getElementById('data').textContent;
+        items = JSON.parse(raw);
+
+        const sel = document.getElementById('sel');
+        items.forEach((it, i) => {
+          const opt = document.createElement('option');
+          opt.value = String(i);
+          opt.textContent = `${i+1}. ${it.title ?? ''}`;
+          sel.appendChild(opt);
+        });
+        sel.addEventListener('change', (e) => {
+          idx = parseInt(e.target.value, 10);
+          render();
+        });
+
+        document.getElementById('prev').addEventListener('click', prev);
+        document.getElementById('next').addEventListener('click', next);
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') prev();
+          if (e.key === 'ArrowRight') next();
+        });
+
+        if (items.length === 0) {
+          document.getElementById('title').textContent = 'No entries';
+          document.getElementById('meta').textContent = '';
+          document.getElementById('stats').textContent = '';
+          document.getElementById('content').innerHTML = '<p>没有符合条件的条目。</p>';
+          return;
+        }
         render();
-      });
-
-      document.getElementById('prev').addEventListener('click', prev);
-      document.getElementById('next').addEventListener('click', next);
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') prev();
-        if (e.key === 'ArrowRight') next();
-      });
-
-      if (items.length === 0) {
-        document.getElementById('title').textContent = 'No entries';
-        document.getElementById('meta').textContent = '';
-        document.getElementById('stats').textContent = '';
-        document.getElementById('content').innerHTML = '<p>没有符合条件的条目。</p>';
-        return;
+      } catch (e) {
+        showError(e);
       }
-      render();
     }
 
     window.addEventListener('load', init);
     """
 
-    js = js.replace("__DATA__", data_json)
-
     return f"""<!doctype html>
 <html>
 <head>
 <meta charset="utf-8"/>
-<title>{html.escape(title_text)}</title>
+<title>{html_mod.escape(title_text)}</title>
 <style>{css}</style>
 </head>
 <body>
-<h1>{html.escape(title_text)}</h1>
+<h1 id="title">{html_mod.escape(title_text)}</h1>
 <div class="toolbar">
   <button id="prev">Prev</button>
   <button id="next">Next</button>
@@ -501,11 +496,12 @@ def make_index_html(items: List[dict], wrap: int, title_text: str) -> str:
 <div id="meta" class="meta"></div>
 <div id="stats" class="stats"></div>
 <div id="content"></div>
+
+<script type="application/json" id="data">{data_json}</script>
 <script>{js}</script>
 </body>
 </html>
 """
-
 
 # =========================
 # 并行任务：处理一条链（H or L）
@@ -638,7 +634,6 @@ def main() -> int:
         print(f"[ERROR] 找不到输入CSV：{in_path}", file=sys.stderr)
         return 2
 
-    # 目录存在就不动；不存在就创建（不会清理已有内容）
     align_dir = base / ALIGN_DIR
     align_dir.mkdir(parents=True, exist_ok=True)
 
@@ -686,7 +681,6 @@ def main() -> int:
             if viewer_item is not None:
                 viewer_items.append(viewer_item)
 
-    # 稳定排序：row_index 再 chain_type
     def _sort_key(d: dict) -> Tuple[int, str]:
         return int(d.get("row_index") or 0), str(d.get("chain_type") or "")
 
@@ -698,13 +692,12 @@ def main() -> int:
 
     viewer_items.sort(key=lambda it: (_viewer_rownum(it), it.get("title", "")))
 
-    # 写 CSV
     out_csv = base / OUTPUT_CSV
     with out_csv.open("w", encoding="utf-8", newline="") as f:
         fieldnames = [
             "row_index",
-            "pdb_id",      # raw from CSV
-            "pdb_entry",   # first 4 upper used for fetching
+            "pdb_id",
+            "pdb_entry",
             "chain_type",
             "chain_id",
             "local_sequence_len",
@@ -723,15 +716,19 @@ def main() -> int:
         for r in csv_rows:
             writer.writerow({k: r.get(k, "") for k in fieldnames})
 
-    # 生成 HTML：主页面仅 DIFFERENT（viewer_items 就是 DIFFERENT）
+    # DIFFERENT only
     main_items = viewer_items
-    index_html = make_index_html(main_items, wrap=WRAP, title_text="chain_check_1 (DIFFERENT only)")
-    (align_dir / INDEX_HTML).write_text(index_html, encoding="utf-8")
+    (align_dir / INDEX_HTML).write_text(
+        make_index_html(main_items, wrap=WRAP, title_text="chain_check_1 (DIFFERENT only)"),
+        encoding="utf-8",
+    )
 
-    # focus：仅 DIFFERENT 且 identity != 1
+    # focus: DIFFERENT & identity != 1
     focus_items = [it for it in viewer_items if abs(float(it["identity_no_gaps"]) - 1.0) > 1e-12]
-    focus_html = make_index_html(focus_items, wrap=WRAP, title_text="chain_check_1_focus (DIFFERENT & identity_no_gaps != 1)")
-    (align_dir / FOCUS_HTML).write_text(focus_html, encoding="utf-8")
+    (align_dir / FOCUS_HTML).write_text(
+        make_index_html(focus_items, wrap=WRAP, title_text="chain_check_1_focus (DIFFERENT & identity_no_gaps != 1)"),
+        encoding="utf-8",
+    )
 
     print(f"\n[DONE] 输出完成：{out_csv}")
     print(f"[DONE] DIFFERENT 查看器：{align_dir / INDEX_HTML}")
