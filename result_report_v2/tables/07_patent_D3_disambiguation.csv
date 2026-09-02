@@ -1,0 +1,5 @@
+﻿patent_experiment,tested_object,result,interpretation
+Fig.10A-10D / BIACORE,soluble human FcRH3/FCRL3,1G7.v85 KD about 90 nM; human FcRH5 KD 2.4 nM,documented weak molecular cross-binding is to FcRH3
+Fig.25A / cell FACS,"SVT2 cells expressing FcRH1, FcRH2, FcRH3, FcRH4 or FcRH5","binding to FcRH5, not to the other family members",FcRH3 weak SPR signal did not become clear cell-surface binding
+Fig.25B / domain deletion FACS,"293 parental, FcRH5 full length, FcRH5 D9-deletion",binding to full-length FcRH5; loss after D9 deletion,proves D9 dependence; does not test FcRH5 D3 binding
+Fig.24A-B,gD-FcRH5 full length and gD-FcRH5 domain 9,domain-9 construct used,no isolated FcRH5 D3 weak-binding experiment

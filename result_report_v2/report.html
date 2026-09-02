@@ -1,0 +1,85 @@
+<!doctype html><html lang='zh-CN'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'><title>FcRH5 D9特异性VHH表位精修 v2</title>
+<style>
+:root{--ink:#17202a;--muted:#65727e;--a:#b51f3a;--b:#136f8a;--bg:#f4f7f8;--card:#fff;--line:#dfe6e9}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.68 system-ui,"Microsoft YaHei",sans-serif}
+main{max-width:1180px;margin:auto;padding:30px}header{background:linear-gradient(120deg,#132d46,#16697a);color:white;padding:34px;border-radius:18px}
+h1{margin:0 0 8px;font-size:30px}h2{margin-top:34px;border-left:6px solid var(--a);padding-left:12px}h3{color:#214a63}
+.lead{font-size:18px}.warn{background:#fff7df;border:1px solid #efd48b;padding:16px;border-radius:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.res,.panel{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:16px}
+.res b{font-size:22px;color:var(--a);display:block}.res span{font-weight:700}.res small{display:block;color:var(--muted)}
+img{max-width:100%;height:auto;border-radius:12px;border:1px solid var(--line);background:white}table{width:100%;border-collapse:collapse;background:white}
+th,td{padding:9px 11px;border:1px solid var(--line);text-align:left}th{background:#eaf2f4}code{font-size:14px}a{color:#0a6680}
+.verdict{font-size:20px;background:#e7f5ef;border-left:6px solid #25845d;padding:18px}footer{color:var(--muted);margin-top:30px}
+</style></head><body><main>
+<header><h1>FcRH5 D9特异性VHH表位精修报告 v2</h1><div>完成时间：2026-09-01 15:26:37（Asia/Shanghai）</div></header>
+<p class='lead'>本版不再把旧图中的蓝链与紫链接触区当成两个已确认的独立表位。它们是同一预测Fab–D9界面的两侧，而且各自富含Ig样结构域保守残基。报告改为筛选可供VHH识别的<strong>组合特异性表面</strong>。</p>
+<div class='warn'><b>证据边界：</b>专利证明1G7/cevostamab类分子依赖D9并给出FcRH2/FcRH3交叉反应规律，但没有公布抗原残基级表位。因此以下是“优先实验验证的计算候选”，不能称为已经证实的真正表位。</div>
+<h2>核心结论</h2><div class='verdict'>首选表位A的特异性信息集合为 <b>L781/R785/D822/R829/T832</b>；考虑单VHH几何后，推荐把 <b>L781/R785/D822/R829</b> 定义为必须覆盖的紧凑能量核心，<b>T832</b>作为可选边缘/鉴别位点。E831、N823、G824、Q828等保守残基只作支撑面，不应成为主要热点。</div>
+<p>四个专利报告候选残基均有表面暴露：L781 119.65、D822 32.67、R829 110.13、T832 94.57 Å²。最小重原子距离显示L781–D822为4.16 Å、D822–R785为2.90 Å、R785–R829为6.81 Å、R829–T832为5.96 Å，组成连续的弯曲脊面，适合由一条较长CDR3跨越。</p>
+<p><img src='images/01_primary_D9_specificity_surface.png' alt='首选D9特异性表位表面'></p>
+<p><img src='images/02_primary_D9_chemical_surface.png' alt='首选表位化学表面'></p>
+<h2>为何比v1更特异</h2>
+<p>v1蓝区TAEHS及紫区的大部分骨架在D7/D8、FcRH2和FcRH3中高度复现。v2要求VHH同时读取多个“错配位点”：任何一个比较结构域都不能完整复现五残基核心。D8与FcRH3最高只保留2/5精确相同残基，因此它们是主要风险，而不是等价表位。</p>
+<table><thead><tr><th>高风险结构域</th><th>映射核心序列<br>(781/785/822/829/832)</th><th>精确相同</th><th>完整复现</th></tr></thead><tbody><tr><td>FcRH5_D7</td><td><code>PWNHT</code></td><td>1/5</td><td>NO</td></tr><tr><td>FcRH5_D8</td><td><code>PWDRM</code></td><td>2/5</td><td>NO</td></tr><tr><td>FcRH1_Ig3</td><td><code>PWNRA</code></td><td>1/5</td><td>NO</td></tr><tr><td>FcRH2_Ig4</td><td><code>PQNCP</code></td><td>0/5</td><td>NO</td></tr><tr><td>FcRH3_Ig5</td><td><code>PRDVR</code></td><td>2/5</td><td>NO</td></tr><tr><td>FcRH3_Ig6</td><td><code>PWDHT</code></td><td>2/5</td><td>NO</td></tr><tr><td>FcRH4_Ig1</td><td><code>F--RP</code></td><td>1/5</td><td>NO</td></tr><tr><td>FcRH6_Ig2</td><td><code>LFPQQ</code></td><td>1/5</td><td>NO</td></tr></tbody></table>
+<p>下图中红色为与D9核心精确相同的映射残基，橙色为替换残基；结构均按D9对齐。不同域整体外形差异也会影响VHH能否形成完整界面。</p><p><img src='images/03_high_risk_domain_comparison.png' alt='高风险结构域表面比较'></p>
+<h2>残基级设计解释</h2><div class='grid'><div class='res'><b>G760</b><span>B核心</span><small>SASA 42.52 Å² · pLDDT 66.62</small><p>高度暴露；多数近缘结构域不保守，但人/猴差异使其不适合要求食蟹猴交叉反应的项目。</p></div><div class='res'><b>T761</b><span>B核心</span><small>SASA 134.24 Å² · pLDDT 61.44</small><p>高度暴露且在比较集中最稀有；属于探索性人源D9选择性位点。</p></div><div class='res'><b>H762</b><span>B核心</span><small>SASA 147.48 Å² · pLDDT 68.5</small><p>高度暴露；仅FcRH3 Ig5出现相同残基，可能把主要残余风险限制在FcRH3。</p></div><div class='res'><b>L781</b><span>A一级核心</span><small>SASA 119.65 Å² · pLDDT 85.81</small><p>L相对D7/D8及FcRH1/2/3常见P发生形状/疏水差异；报告提出的最强候选之一。</p></div><div class='res'><b>R785</b><span>A二级核心</span><small>SASA 69.1 Å² · pLDDT 94.06</small><p>R在D7/D8/FcRH1等多为芳香残基；但FcRH3 Ig5为R，且人/猴可能不同。</p></div><div class='res'><b>D822</b><span>A一级核心</span><small>SASA 32.67 Å² · pLDDT 91.44</small><p>D可排除D7、FcRH1/2/6，但D8与FcRH3保留D，不能单独决定特异性。</p></div><div class='res'><b>R829</b><span>A一级核心</span><small>SASA 110.13 Å² · pLDDT 91.88</small><p>R可排除FcRH2/3/6，但D8、FcRH1/4可相同，需与L781/T832联合识别。</p></div><div class='res'><b>T832</b><span>A一级核心</span><small>SASA 94.57 Å² · pLDDT 89.81</small><p>T可排除D8及FcRH1/2/4/6；FcRH3 Ig6与D7仍可相同。</p></div><div class='res'><b>E831</b><span>支撑环</span><small>SASA 161.05 Å² · pLDDT 90.25</small><p>高暴露酸性边缘，可提供定向作用；但D8/FcRH1/2保守，不应成为主要热点。</p></div></div>
+<h2>探索性表位B</h2>
+<p>若目标只要求人源FcRH5而不要求食蟹猴交叉反应，可探索D9 N端环：G760–T761–H762–A764及其757–768支撑表面。它在本比较集中序列更稀有，但该环pLDDT约61–79、构象可信度低于表位A，并且与专利的跨物种结合事实不一致，也无Cevostamab姿态直接支持，故仅作为低优先级探索方案。</p>
+<p><img src='images/04_exploratory_cap_surface.png' alt='探索性帽部表位'></p>
+<h2>与专利实验是否相符</h2>
+<div class='verdict'><b>“D3少许结合”的确定解释：它指FcRH3/FCRL3旁系受体，不是FcRH5自身D3结构域。</b></div>
+<p>这不是命名猜测，而是由专利实验对象直接限定：</p>
+<table><thead><tr><th>专利实验</th><th>实际测试对象</th><th>结果</th><th>能够得出的结论</th></tr></thead><tbody>
+<tr><td>Fig.10A–10D，BIACORE</td><td>可溶性human FcRH3与human/cyno FcRH5</td><td>1G7.v85：FcRH5约2.4 nM；FcRH3约90 nM</td><td>“弱结合”明确属于FcRH3/FCRL3旁系受体</td></tr>
+<tr><td>Fig.25A，细胞FACS</td><td>分别表达FcRH1、FcRH2、FcRH3、FcRH4、FcRH5的SVT2细胞</td><td>专利图注结论：结合FcRH5，不结合其他家族成员</td><td>可溶FcRH3的弱SPR信号没有转化为明确细胞表面结合</td></tr>
+<tr><td>Fig.25B，结构域删除FACS</td><td>293亲本、FcRH5全长、FcRH5-D9-deletion</td><td>D9删除后结合消失</td><td>证明FcRH5 D9依赖；该实验没有测试FcRH5 D3</td></tr>
+<tr><td>Fig.24A–B</td><td>gD-FcRH5 full-length与gD-FcRH5-domain 9</td><td>使用的是domain 9构建体</td><td>同样没有“FcRH5 D3弱结合”实验</td></tr>
+</tbody></table>
+<p><b>因此：</b>两份专利没有报告1G7.v85对FcRH5自身D3的弱结合，也没有展示孤立FcRH5-D3结合实验。FcRH5 D3在本报告序列比较中仍可作为计算型负筛对象，但不能写成“专利已观察到的脱靶”。专利支持的准确表述是：<b>对可溶性FcRH3有约90 nM弱分子结合，但FcRH1–4细胞FACS和NK细胞功能实验基本阴性。</b>依据见<a href='https://patents.google.com/patent/WO2016205520A1/en' target='_blank'>WO2016205520A1专利全文与图注</a>。</p>
+<ul><li><b>相符：</b>D9删除/结构域实验支持靶点必须位于D9；本候选完全位于D9。</li>
+<li><b>相符：</b>专利成熟变体出现FcRH2/FcRH3旁系结合，说明只追求保守表面亲和力会损失选择性；本方案把D8、FcRH2及全部旁系受体列为负筛。</li>
+<li><b>相符但非证明：</b>核心中FcRH3 Ig5/Ig6各保留2/5精确残基，高于多数旁系域，能够解释FcRH3是最合理的残余风险之一；但不能据此证明专利抗体正是接触这些残基。</li>
+<li><b>需警惕：</b>FcRH2交叉反应主要由抗体成熟导致，表明交叉反应由完整三维界面和亲和力共同决定，不能只看线性序列。</li></ul>
+<h2>一个正常VHH能否覆盖该表位？</h2>
+<div class='verdict'><b>结论：可以覆盖“紧凑核心”，但不应要求一个普通VHH完整覆盖全部五个特异性位点和17个支撑残基。</b>推荐把L781/R785/D822/R829设为必须接触的能量核心，把T832降为可选边缘接触/突变鉴别位点。</div>
+<h3>几何比较</h3>
+<table><thead><tr><th>对象</th><th>最大Cα跨度</th><th>主轴×次轴</th><th>深度</th><th>解释</th></tr></thead><tbody>
+<tr><td>FYT-499实际VHH接触抗原足迹</td><td>17.82 Å</td><td>17.46×14.32 Å</td><td>7.54 Å</td><td>本地高可信AF3 VHH–D9模型的实际标尺（ranking 0.91，ipTM 0.87）</td></tr>
+<tr><td>VHH实际接触paratope</td><td>22.9 Å</td><td>22.62×17.0 Å</td><td>5.44 Å</td><td>常规接触端面约22.9 Å跨度</td></tr>
+<tr><td>五残基集合 L781/R785/D822/R829/T832</td><td>23.65 Å</td><td>23.64×7.98 Å</td><td>4.29 Å</td><td>23.65 Å长而窄，已位于普通接触端面的边缘</td></tr>
+<tr><td>推荐紧凑核心 L781/R785/D822/R829</td><td>16.55 Å</td><td>16.36×7.95 Å</td><td>2.64 Å</td><td>16.55 Å且近似平面，正常VHH最可行</td></tr>
+<tr><td>完整17残基支撑面</td><td>28.91 Å</td><td>28.46×11.77 Å</td><td>11.3 Å</td><td>跨度28.91 Å、曲面深度11.3 Å，不宜要求全部被埋藏</td></tr>
+</tbody></table>
+<h3>刚性VHH覆盖试验</h3>
+<p>将FYT-499的正常VHH骨架作为几何标尺，围绕目标表面搜索取向并沿表面法线平移。最佳紧凑核心方案可使<strong>4/4</strong>个必需位点及<strong>11/17</strong>个支撑位点进入5 Å范围；T832距离约10.96 Å，因此不被同一姿态直接覆盖。刚性模型仍有8个&lt;1.8 Å和16个&lt;2.2 Å原子重叠，说明它不是可直接使用的结合模型，但这些冲突集中于未重新设计/松弛的侧链与环，拓扑覆盖本身成立。</p>
+<p><img src='images/05_VHH_rigid_coverage_feasibility.png' alt='正常VHH刚性覆盖可行性模型侧向界面视图'></p>
+<p><b>图5，真实贴合的侧向界面视图：</b>D9位于左侧，VHH位于右侧；灰色为D9，浅蓝为VHH，深蓝为VHH上距离D9小于5 Å的接触残基，麦色为D9支撑面，红/品红为四残基必需核心，橙色为可选T832。该角度沿界面切向观察，已经不再由抗原正面遮挡VHH接触端面。</p>
+<p><img src='images/06_VHH_open_book_interface.png' alt='VHH与D9的open-book界面展开图'></p>
+<p><b>图6，open-book界面展开图：</b>将同一VHH刚性平移16 Å，仅用于显露双方互补表面；这不是另一种预测姿态，也不表示真实复合物存在间隙。它适合逐一比较深蓝paratope与红/品红D9核心的对应关系。</p>
+<h3>CDR长度与库设计建议</h3>
+<div class='verdict'><b>首选：保持CDR1/CDR2的骨架原长度，以CDR3 12–15 aa为主库。</b>若做生成式设计，优先分别生成12、14、15 aa三组；16–18 aa只作为小比例延伸组，用于尝试T832，而不是默认把CDR3做得越长越好。</div>
+<table><thead><tr><th>设计部分</th><th>推荐长度</th><th>建议占比</th><th>在本表位中的任务</th><th>主要风险</th></tr></thead><tbody>
+<tr><td>CDR1</td><td>保留所选VHH骨架原长度（常见约7）</td><td>不单独做长度库</td><td>从侧面协助读取L781/R785；以序列多样化为主</td><td>避免为了延伸足迹同时改变三条环的长度</td></tr><tr><td>CDR2</td><td>保留所选VHH骨架原长度（常见约6）</td><td>不单独做长度库</td><td>提供支撑接触，尽量不把保守Ig骨架做成主要热点</td><td>限制连续疏水或强正电表面</td></tr><tr><td>CDR3主库</td><td>12–15（优先12、14、15）</td><td>约70%</td><td>覆盖16.55 Å紧凑核心；优先锚定D822/R829并与CDR1共同读取L781/R785</td><td>长度仍需结合loop构型和AF3多模型评估</td></tr><tr><td>CDR3短对照库</td><td>9–11</td><td>约15%</td><td>测试是否可形成更平坦、低熵的紧凑结合模式</td><td>可能只覆盖局部保守簇，必须强化D8/FcRH3负筛</td></tr><tr><td>CDR3延伸探索库</td><td>16–18</td><td>约15%</td><td>探索T832边缘接触或绕过表面凸起</td><td>不保证自动覆盖T832；需额外检查loop稳定性、非经典二硫键、疏水/电荷斑块与聚集风险</td></tr>
+</tbody></table>
+<p>该推荐基于三点：本项目四残基核心只有16.55 Å，FYT-499实际抗原足迹为17.82 Å，普通VHH端面已经足够；公开VHH结构数据中CDR3中位数约15 aa，Camelidae结构集平均约14.5 aa；一项面向治疗开发的人工VHH库采用6/12/15 aa CDR3，并因≥16 aa时非经典二硫键更常见而把15 aa设为主设计上限。这里的“长度”应在最终序列上用同一编号体系（建议ANARCI/IMGT）统一复核，不能把本报告的序列位置代理范围直接当作严格IMGT注释。参考：<a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC9684374/' target='_blank'>VHH CDR序列/结构统计</a>、<a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11045209/' target='_blank'>Camelidae HCDR长度结构集</a>、<a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC8884020/' target='_blank'>治疗型人工VHH库设计</a>。</p>
+<p><b>建议的接触分工（待设计模型验证）：</b>让CDR3主要锚定D822/R829一侧，CDR1协助读取L781/R785，使VHH跨越而不是只贴住单个保守Ig样环；T832可被CDR3边缘或CDR2轻触。化学上可围绕D822布置一个受控的碱性/氢键供体位点，围绕R785/R829布置酸性或极性受体，L781附近允许小型芳香/疏水接触，但应避免形成大面积疏水或同号电荷斑块。</p>
+<h3>对VHH生成的直接约束</h3>
+<ul><li><b>必须热点：</b>L781、R785、D822、R829；候选VHH至少应在D9四点组合突变中表现出明显协同损失。</li>
+<li><b>可选卫星：</b>T832可由较长CDR3边缘接触，但不应作为所有克隆必须同时覆盖的硬条件。</li>
+<li><b>足迹不是清单：</b>N823/G824/Q828/E831等为可接触支撑面，不要求每个残基都埋藏；否则会迫使VHH识别保守Ig骨架。</li>
+<li><b>结构策略：</b>优先筛选具有中长CDR3且CDR1/CDR3共同参与的VHH；对命中物做AF3多模型复核，要求四残基核心至少3/4、最好4/4在≥3/5模型中形成5 Å接触，并检查D8/FcRH3反向复合物。</li></ul>
+<p>公开结构研究显示，VHH既可在平坦表面形成约700–900 Å²界面，也可通过CDR3插入沟槽；因此“一个VHH能覆盖多大的表位”取决于CDR构型而非固定圆盘。这里的判断主要依赖本项目实际VHH骨架的几何标尺，而不是只套用平均界面面积。参考：<a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC3733345/' target='_blank'>EGFR–7D12结构</a>、<a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC9709291/' target='_blank'>TcdA–AH3结构</a>、<a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC8237747/' target='_blank'>PD-L1 VHH结构</a>。</p>
+<h2>VHH筛选与验证</h2><ol><li><b>正筛：</b>使用独立折叠的FcRH5 D9；优先富集同时覆盖L781/D822/R829/T832的克隆。（建立D9依赖性并迫使VHH跨越组合特异性位点。）</li><li><b>强负筛：</b>FcRH5 D8与D7；尤其D8是结构/序列最近的内部脱靶。（避免只识别D822/R829/E831等D8可复现表面。）</li><li><b>旁系负筛：</b>FcRH1、FcRH2、FcRH4、FcRH6完整ECD及对应最高相似Ig域。（排除保守Ig骨架识别。）</li><li><b>FcRH3分层：</b>先以FcRH3 Ig5/Ig6作温和负筛，后以全长细胞FACS和SPR/BLI定量。（尽量消除FcRH3；若无法完全消除，将其限制为低亲和、非细胞结合的残余风险。）</li><li><b>热点验证：</b>D9单点L781P、D822N、R829V/H、T832M/A/P及组合突变；加入R785W/Q。（验证亲和力是否依赖组合核心，而不是保守支撑环。）</li><li><b>反向移植：</b>将D9组合核心移植至D8/FcRH2 Ig4/FcRH3 Ig5或Ig6。（若移植可获得结合，证明所选残基具有因果性。）</li><li><b>构象控制：</b>同时检测D9单域、FcRH5完整ECD和FcRH5阳性细胞。（排除只结合截短体非天然构象的VHH。）</li></ol>
+<p>推荐判定门槛：单域D9与完整FcRH5 ECD均阳性；D8/D7及FcRH1/2/4/6无可测结合；FcRH3优先也应阴性。若无法消除FcRH3，至少要求相对FcRH5弱≥30–50倍且在全长细胞FACS中无明确阳性，接近专利中“可溶蛋白弱结合、细胞层面基本阴性”的状态。</p>
+<h2>文件说明</h2><ul>
+<li><a href='structures/01_primary_D9_specificity_design.pse'>01_primary_D9_specificity_design.pse</a>：首选表位A的表面、化学、标签和旧表位对照场景。</li>
+<li><a href='structures/02_all_domains_comparison.pse'>02_all_domains_comparison.pse</a>：D9与D1–D8及FcRH1/2/3/4/6全部Ig域对齐比较。</li>
+<li><a href='structures/03_VHH_rigid_coverage_feasibility.pse'>03_VHH_rigid_coverage_feasibility.pse</a>：正常VHH骨架覆盖紧凑核心的刚性几何模型；<a href='structures/03_VHH_rigid_coverage_model.pdb'>PDB</a>可用于后续松弛或设计。</li>
+<li><a href='tables/01_refined_core_residues.csv'>01_refined_core_residues.csv</a>：核心/支撑残基依据；<a href='tables/02_core_specificity_comparison.csv'>02_core_specificity_comparison.csv</a>：全部比较域的核心映射。</li>
+<li><a href='tables/03_VHH_selection_and_validation.csv'>03_VHH_selection_and_validation.csv</a>：正负筛和突变验证清单；<a href='tables/04_all_D9_surface_residue_specificity.csv'>04</a>/<a href='tables/05_patent_candidate_mapping.csv'>05</a>为完整计算明细。</li>
+<li><a href='tables/06_VHH_coverage_geometry.csv'>06_VHH_coverage_geometry.csv</a>：VHH标尺、五残基集合、四残基紧凑核心及完整支撑面的尺寸对比。</li>
+<li><a href='tables/07_patent_D3_disambiguation.csv'>07_patent_D3_disambiguation.csv</a>：逐项区分FcRH3旁系受体、FcRH5 D9删除体与未被测试的FcRH5 D3。</li>
+<li><a href='tables/08_VHH_CDR_length_recommendations.csv'>08_VHH_CDR_length_recommendations.csv</a>：CDR1/2保留策略、CDR3主库/短对照/延伸探索库的长度与比例建议。</li></ul>
+<footer>模型：AlphaFold DB FcRH家族结构 + UniProt结构域/序列 + 用户提供专利分析报告。结构可达性不等于实验表位；最终以DMS、反向移植和细胞结合为准。</footer>
+</main></body></html>
