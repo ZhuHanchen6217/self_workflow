@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cevostamab–FcRH5 D9表位与VHH设计报告 v1</title>
+  <style>
+    :root{--ink:#16202a;--muted:#5f6b76;--line:#dfe6ec;--paper:#fff;--bg:#f3f6f8;--blue:#2878b5;--purple:#8a3fa0;--orange:#e6903a;--green:#167d64}
+    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","Noto Sans SC",Arial,sans-serif;line-height:1.72}
+    .hero{background:linear-gradient(135deg,#0f3348,#21465b 52%,#4b2d58);color:white;padding:54px 24px 46px}.wrap{max-width:1180px;margin:auto}.hero h1{font-size:clamp(28px,4vw,48px);line-height:1.22;margin:0 0 14px}.hero p{max-width:900px;margin:6px 0;color:#dcebf2}.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.pill{border:1px solid #ffffff55;background:#ffffff14;border-radius:999px;padding:7px 13px;font-size:14px}
+    main{max-width:1180px;margin:28px auto;padding:0 18px}.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px;margin:18px 0;box-shadow:0 6px 22px #15354a0c}.card h2{margin:0 0 14px;font-size:27px}.card h3{margin:24px 0 10px}.lead{font-size:19px}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.result{border-radius:14px;padding:20px;color:white}.blue{background:linear-gradient(145deg,#1d6698,#3186bd)}.purple{background:linear-gradient(145deg,#6d2f80,#9a52ad)}.result h3{margin:0 0 8px;font-size:23px}.sequence{font-family:Consolas,monospace;background:#0002;border-radius:8px;padding:9px 11px;display:inline-block}.metric{font-size:28px;font-weight:700}.metric small{font-size:14px;font-weight:400;opacity:.9}
+    img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:12px;background:white}.caption{font-size:14px;color:var(--muted);margin-top:7px}.legend{display:flex;gap:16px;flex-wrap:wrap}.sw{display:inline-flex;align-items:center;gap:7px}.dot{width:14px;height:14px;border-radius:3px;display:inline-block}
+    table{border-collapse:collapse;width:100%;font-size:15px}th,td{border-bottom:1px solid var(--line);padding:10px 9px;text-align:left;vertical-align:top}th{background:#f7f9fb}.callout{border-left:5px solid var(--green);background:#edf8f4;padding:15px 18px;border-radius:8px}.warn{border-left-color:var(--orange);background:#fff7eb}.files{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.file{display:block;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:13px 15px;background:#fbfcfd}.file:hover{border-color:var(--blue);box-shadow:0 4px 14px #2878b51c}.file b{display:block;color:#185b87}.small{font-size:14px;color:var(--muted)}details{border:1px solid var(--line);border-radius:10px;padding:12px 15px;margin:10px 0}summary{cursor:pointer;font-weight:700}footer{max-width:1180px;margin:30px auto;padding:20px;color:var(--muted);font-size:14px}
+    @media(max-width:780px){.grid2,.files{grid-template-columns:1fr}.card{padding:19px}.hero{padding-top:38px}table{font-size:13px}}
+  </style>
+</head>
+<body>
+  <header class="hero"><div class="wrap">
+    <h1>Cevostamab–FcRH5 D9表位、特异性与VHH设计分析</h1>
+    <p>基于用户上传结合图的图像约束表位恢复，结合完整ECD序列、FcRH家族同源结构表面及两份Cevostamab专利实验结果。</p>
+    <div class="meta"><span class="pill">result_report_v1</span><span class="pill">日期：2026-09-01</span><span class="pill">完成：2026-09-01 11:57:44 UTC+08:00</span></div>
+  </div></header>
+  <main>
+    <section class="card"><h2>执行摘要</h2>
+      <p class="lead"><b>蓝表位</b>为FcRH5 810–814（TAEHS），但其序列和局部表面在FcRH5 D7、FcRH2 Ig4及FcRH3 Ig5中几乎完全复现；<b>紫表位</b>为792–796 + 805–812，更大的表面和R796/L805/A811组合提供了更可利用的FcRH5选择性。</p>
+      <div class="callout"><b>VHH路线建议：</b>优先开发紫表位VHH；若采用蓝表位，必须让CDR3跨到D9特异邻近面，并把FcRH5 D7、FcRH2 Ig4和FcRH3 Ig5纳入强制反筛。</div>
+    </section>
+
+    <section class="grid2">
+      <article class="result blue"><h3>蓝链表位</h3><div class="sequence">T810-A811-E812-H813-S814</div><p><span class="metric">426 Å²</span> <small>预测SASA</small></p><p>核心锚点：E812 / S814<br>表面：紧凑、极性/酸性、近似净电荷−1</p></article>
+      <article class="result purple"><h3>紫链表位</h3><div class="sequence">TLGNR + LNLSLTAE</div><p><span class="metric">892 Å²</span> <small>预测SASA</small></p><p>核心锚点：R796 / N806 / S808<br>表面：较大混合面，含电荷边缘和疏水台面</p></article>
+    </section>
+
+    <section class="card"><h2>两个表位分别观察</h2><div class="grid2">
+      <figure><img src="images/01_blue_D9_surface.png" alt="蓝表位D9表面"><figcaption class="caption">蓝色区域为FcRH5 810–814；抗体已隐藏，适合判断VHH可接近面。</figcaption></figure>
+      <figure><img src="images/02_purple_D9_surface.png" alt="紫表位D9表面"><figcaption class="caption">紫色区域为FcRH5 792–796 + 805–812；表面面积明显大于蓝表位。</figcaption></figure>
+      <figure><img src="images/03_blue_D9_chemical_surface.png" alt="蓝表位化学表面"><figcaption class="caption">蓝表位化学类型着色。</figcaption></figure>
+      <figure><img src="images/04_purple_D9_chemical_surface.png" alt="紫表位化学表面"><figcaption class="caption">紫表位化学类型着色，可用于规划CDR电荷与疏水互补。</figcaption></figure>
+    </div><div class="legend"><span class="sw"><i class="dot" style="background:#d33"></i>酸性</span><span class="sw"><i class="dot" style="background:#2471c8"></i>碱性</span><span class="sw"><i class="dot" style="background:#efd84f"></i>极性</span><span class="sw"><i class="dot" style="background:#888"></i>疏水</span></div></section>
+
+    <section class="card"><h2>结构表面特异性</h2>
+      <h3>蓝表位：高度保守，单独靶向风险高</h3>
+      <table><thead><tr><th>结构域</th><th>序列</th><th>同一性</th><th>局部RMSD</th><th>SASA</th></tr></thead><tbody>
+        <tr><td>FcRH5 D9</td><td>TAEHS</td><td>5/5</td><td>0.00 Å</td><td>426 Å²</td></tr><tr><td>FcRH5 D7</td><td>TAEHS</td><td>5/5</td><td>0.33 Å</td><td>371 Å²</td></tr><tr><td>FcRH2 Ig4</td><td>TAEHS</td><td>5/5</td><td>0.22 Å</td><td>367 Å²</td></tr><tr><td>FcRH3 Ig5</td><td>TAEHS</td><td>5/5</td><td>0.36 Å</td><td>347 Å²</td></tr>
+      </tbody></table>
+      <figure><img src="images/05_blue_high_risk_comparison.png" alt="蓝表位高风险同源表面"><figcaption class="caption">蓝色为与D9相同的映射残基，橙色为替换残基。FcRH5 D7、FcRH2 Ig4和FcRH3 Ig5几乎完整复现D9蓝表面。</figcaption></figure>
+      <h3>紫表位：仍同源，但存在可组合的判别残基</h3>
+      <table><thead><tr><th>结构域</th><th>映射序列</th><th>同一性</th><th>局部RMSD</th><th>关键差异</th></tr></thead><tbody>
+        <tr><td>FcRH5 D9</td><td>TLGNR-LNLSLTAE</td><td>13/13</td><td>0.00 Å</td><td>目标</td></tr><tr><td>FcRH2 Ig4</td><td>TLGNS-FNLSLTAE</td><td>11/13</td><td>0.45 Å</td><td>R796→S、L805→F</td></tr><tr><td>FcRH3 Ig5</td><td>TLGNS-FNLSLTAE</td><td>11/13</td><td>0.37 Å</td><td>R796→S、L805→F</td></tr><tr><td>FcRH5 D7</td><td>TLGSS-FNLSLTAE</td><td>10/13</td><td>0.31 Å</td><td>N795/R796/L805不同</td></tr>
+      </tbody></table>
+      <figure><img src="images/06_purple_high_risk_comparison.png" alt="紫表位高风险同源表面"><figcaption class="caption">紫表面仍具有高度同源骨架，但R796、L805及A811提供可供VHH共同利用的选择性差异。</figcaption></figure>
+    </section>
+
+    <section class="card"><h2>全部FcRH结构域图谱</h2>
+      <p>29个Ig样结构域均先按全域Cα对齐到FcRH5 D9，再从同一参考视角显示。橙色替换位点和整体表面凹凸可同时判断“序列相似但结构不同”或“序列与结构都相似”。</p>
+      <details open><summary>蓝表位全部结构域</summary><img loading="lazy" src="images/07_blue_all_domains_atlas.png" alt="蓝表位全部结构域图谱"></details>
+      <details><summary>紫表位全部结构域</summary><img loading="lazy" src="images/08_purple_all_domains_atlas.png" alt="紫表位全部结构域图谱"></details>
+    </section>
+
+    <section class="card"><h2>与专利实验的对应关系</h2>
+      <table><thead><tr><th>专利实验</th><th>结果</th><th>本分析解释</th></tr></thead><tbody>
+        <tr><td>FIG.25B D9删除</td><td>D9删除后1G7.v85失去结合</td><td>预测表位792–814完全位于D9，吻合</td></tr><tr><td>FIG.25A家族FACS</td><td>该条件下未检出FcRH1–4结合</td><td>完整构象组合可产生细胞水平选择性</td></tr><tr><td>Biacore</td><td>FcRH5约2.4 nM；FcRH3约90 nM</td><td>FcRH3 Ig5表面高度相似，解释弱交叉反应</td></tr><tr><td>Table 9</td><td>部分变体对FcRH2/3弱阳性</td><td>与FcRH2/3结构风险最高一致</td></tr><tr><td>膜近端功能</td><td>D9附近表位具有更强T细胞功能</td><td>支持选择D9而非D7/D8作为功能表位</td></tr>
+      </tbody></table>
+      <p class="small">详细逐项结果：<a href="tables/06_patent_validation_summary.csv">06_patent_validation_summary.csv</a>。FcRH6未被两份专利实验覆盖。</p>
+    </section>
+
+    <section class="card"><h2>VHH设计与筛选建议</h2><div class="grid2">
+      <div><h3>蓝表位路线</h3><ol><li>正筛使用完整折叠D9或全长ECD，不使用TAEHS短肽。</li><li>促使长CDR3跨到R796/L805邻近表面。</li><li>强制反筛FcRH5 D7、FcRH2 Ig4、FcRH3 Ig5。</li><li>用FcRH5 D5判断序列依赖还是构象依赖。</li></ol></div>
+      <div><h3>紫表位路线</h3><ol><li>让VHH同时依赖R796与L805。</li><li>利用R796电荷和L805/F体积差异。</li><li>尽量覆盖A811以继续排除FcRH1/D8/FcRH3 Ig6。</li><li>确认N806潜在糖基化对结合的影响。</li></ol></div>
+    </div><div class="callout warn"><b>优先级：</b>紫表位VHH优先；蓝表位只有在足迹跨出TAEHS时才适合追求FcRH5家族特异性。</div></section>
+
+    <section class="card"><h2>下载结果文件</h2>
+      <h3>PyMOL结构</h3><div class="files">
+        <a class="file" href="structures/01_blue_D9_VHH_design.pse"><b>蓝表位D9设计PSE</b><span class="small">5个场景：表面、抗体背景、cartoon、化学表面、残基标签</span></a>
+        <a class="file" href="structures/02_purple_D9_VHH_design.pse"><b>紫表位D9设计PSE</b><span class="small">独立观察紫表位和对应抗体姿态</span></a>
+        <a class="file" href="structures/03_blue_all_domains_comparison.pse"><b>蓝表位29域比较PSE</b><span class="small">所有Ig样域已对齐，可逐个启用</span></a>
+        <a class="file" href="structures/04_purple_all_domains_comparison.pse"><b>紫表位29域比较PSE</b><span class="small">检查同源表面的替换与凹凸</span></a>
+      </div>
+      <h3>结果表格</h3><div class="files">
+        <a class="file" href="tables/01_epitope_residue_summary.csv"><b>表位残基汇总</b><span class="small">核心、扩展及完整编号</span></a><a class="file" href="tables/02_domain_sequence_comparison.csv"><b>结构域序列比较</b><span class="small">D1–D8及FcRH家族同一性</span></a><a class="file" href="tables/03_mapped_contact_residues.csv"><b>逐残基映射</b><span class="small">每个表位位置在各同源域中的对应残基</span></a><a class="file" href="tables/04_best_ECD_windows.csv"><b>完整ECD最佳窗口</b><span class="small">所有区域的连续窗口检索</span></a><a class="file" href="tables/05_structural_surface_metrics.csv"><b>结构表面指标</b><span class="small">RMSD、SASA、pLDDT与化学组成</span></a><a class="file" href="tables/06_patent_validation_summary.csv"><b>专利验证汇总</b><span class="small">实验结果与预测的对应关系</span></a><a class="file" href="tables/07_VHH_design_priority.csv"><b>VHH设计优先级</b><span class="small">路线、判别残基和反筛抗原</span></a>
+      </div>
+      <p>完整文字版说明：<a href="README.md">README.md</a></p>
+    </section>
+
+    <section class="card"><h2>限制与下一步</h2><ol><li>扩展表位是图像约束预测，尚未经过逐残基实验扫描。</li><li>PSE中的抗体姿态允许少量原子冲突，仅用于定位表位方向。</li><li>AlphaFold表面是预测构象，天然糖基化和膜环境可能改变局部可及性。</li><li>建议下一步用R796S、L805F、A811T/E、E812A和S814A进行突变验证，并同时开展FcRH2/3及FcRH5 D7反筛。</li></ol></section>
+  </main>
+  <footer>result_report_v1 · Cevostamab–FcRH5 D9 epitope analysis · 完成于 2026-09-01 11:57:44 UTC+08:00</footer>
+</body></html>

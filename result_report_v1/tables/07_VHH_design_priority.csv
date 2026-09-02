@@ -1,0 +1,4 @@
+route,target_surface,selectivity_assessment,mandatory_negative_selection,preferred_discriminating_residues,design_recommendation
+蓝表位,FcRH5 810-814 TAEHS,单独特异性较差,FcRH5 D7; FcRH2 Ig4; FcRH3 Ig5,R796或L805邻近表面,不要只针对TAEHS短肽；让CDR3跨到D9特异邻近面
+紫表位,FcRH5 792-796加805-812,相对更适合FcRH5特异VHH,FcRH2 Ig4; FcRH3 Ig5; FcRH5 D7,R796; L805; A811,让VHH同时依赖R796和L805并尽量覆盖A811
+蓝紫跨区表位,FcRH5 792-814双侧构象面,理论选择性最高,FcRH5 D7/D8; FcRH1 Ig3; FcRH2 Ig4; FcRH3 Ig5/Ig6,R796加L805加A811并保留E812接触,适合长CDR3跨越两表位边界但需验证可及性

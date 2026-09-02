@@ -1,0 +1,8 @@
+chain_color,evidence_level,d9_local,full_fcrh5,sequence_or_residues,confidence,interpretation
+blue,direct_core,"61;63","812;814","E812;S814",high,Directly labeled in detail image
+blue,continuous_core,"61-63","812-814",EHS,high-medium,H813 bridges the two labeled residues
+blue,restored_shell,"59-63","810-814",TAEHS,medium,Recommended mutagenesis window
+purple,direct_core,"45;55;57","796;806;808","R796;N806;S808",high,Directly labeled in detail image
+purple,restored_shell_1,"41-45","792-796",TLGNR,medium,First discontinuous surface loop
+purple,restored_shell_2,"54-61","805-812",LNLSLTAE,medium,Second surface loop and boundary shared with blue chain
+combined,conformational_span,"41-63","792-814",TLGNRSSPSGGASLNLSLTAEHS,medium-high,Conformational span; not every residue is a direct contact

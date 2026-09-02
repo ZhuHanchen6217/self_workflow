@@ -1,0 +1,7 @@
+evidence,experiment,reported_result,relationship_to_current_analysis,interpretation
+D9定位,FIG.25B全长与D9删除体比较,1G7.v85结合全长FcRH5但D9删除后失去结合,预测联合表位792-814完全位于D9,一致
+家族细胞表面选择性,FIG.25A转染细胞FACS,1G7.v85在该实验中结合FcRH5而未检出FcRH1-4结合,完整构象组合具有细胞水平选择性,一致
+FcRH3弱交叉反应,Biacore,1G7.v85对FcRH5约2.4 nM而对FcRH3约90 nM,结构比较显示FcRH3 Ig5蓝表位5/5且紫表位11/13,一致并提示不能宣称绝对零交叉反应
+亲和成熟变体交叉反应,Table 9,多个变体对FcRH1和FcRH4阴性但对FcRH2或FcRH3出现弱阳性,结构风险排序为FcRH2约等于FcRH3高于FcRH1并远高于FcRH4,一致
+膜近端功能,FIG.23-24,膜近端1G7表位产生更强TCR信号和杀伤,预测表位位于最靠膜的D9,一致
+FcRH6,未测试,两份专利未提供FcRH6交叉反应实验,结构比较显示相似性较低,仅为预测尚无实验验证
