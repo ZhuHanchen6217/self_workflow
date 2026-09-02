@@ -1,0 +1,39 @@
+<!doctype html><html lang='zh-CN'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>FcRH5 D9单/双VHH表位设计报告 v3修订版</title><style>
+:root{--ink:#17212b;--blue:#047c91;--orange:#d66b00;--bg:#f3f6f7;--line:#dce4e7;--purple:#a100a8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.68 system-ui,"Microsoft YaHei",sans-serif}main{max-width:1180px;margin:auto;padding:30px}
+header{background:linear-gradient(120deg,#17324d,#086c78);color:white;padding:34px;border-radius:18px}h1{margin:0 0 8px;font-size:30px}h2{margin-top:36px;border-left:6px solid var(--orange);padding-left:12px}h3{color:#1e5066}
+.lead{font-size:18px}.verdict{font-size:19px;background:#e7f5ef;border-left:6px solid #26835d;padding:17px;border-radius:8px}.warn{background:#fff6df;border:1px solid #ebcf89;padding:15px;border-radius:10px}.correction{background:#f5eafa;border-left:6px solid var(--purple);padding:16px;border-radius:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.card{background:white;border:1px solid var(--line);border-radius:12px;padding:16px}.a{border-top:6px solid var(--orange)}.b{border-top:6px solid var(--blue)}
+img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:12px;background:white}table{width:100%;border-collapse:collapse;background:white}th,td{padding:9px 10px;border:1px solid var(--line);text-align:left}th{background:#e9f1f3}code{font-size:14px}a{color:#096d84}.muted{color:#66737e}
+</style></head><body><main><header><h1>FcRH5 D9 单/双VHH表位设计报告 v3修订版</h1><div>完成时间：2026-09-01 17:55:48（Asia/Shanghai）</div></header>
+<p class='lead'>本次修订解决两个问题：单VHH不再只是重链侧NRLS的复制，而是跨越Cevostamab VH/VL足迹边界；VHH覆盖性不再只用一个完整骨架判断，而是用4个不同CDR3长度/构象的VHH，并且只以CDR3原子计算锚点覆盖。</p>
+<div class='correction'><b>修订后的单VHH首选：N795/R796/L805/S808/E812（NRLSE）。</b>其中R796、S808来自重链细节图，E812来自轻链细节图；N795/L805用于提供D9组合特异性。它不是双VHH-A或B的简单复制。</div>
+
+<h2>两张细节图是否被考虑？</h2><p>答案需要分版本说明：<b>v2基本没有把这两张图作为表位约束</b>；v2的L781/R785/D822/R829/T832与图中五个直接残基零重叠，应视为“全D9表面特异性探索”，不能视为Cevostamab图像支持表位。v3原版确实考虑了细节图，但把两侧拆开：NRLS保留R796/S808，DVAES保留E812/S814，N806因糖基化风险未作硬锚点。问题在于原单VHH没有同时读取两侧，本次已经纠正。</p>
+<table><thead><tr><th>细节图残基</th><th>图像侧</th><th>v2</th><th>v3原版</th><th>v3修订单VHH</th></tr></thead><tbody><tr><td>R796</td><td>重链/紫链</td><td>未采用</td><td>NRLS采用</td><td>NRLSE采用</td></tr><tr><td>N806</td><td>重链/紫链</td><td>未采用</td><td>证据保留，未作硬锚点</td><td>支持/糖基化环境，不作硬锚点</td></tr><tr><td>S808</td><td>重链/紫链</td><td>未采用</td><td>NRLS采用</td><td>NRLSE采用</td></tr><tr><td>E812</td><td>轻链/蓝链</td><td>未采用</td><td>DVAES采用，但单VHH NRLS未采用</td><td>NRLSE采用</td></tr><tr><td>S814</td><td>轻链/蓝链</td><td>未采用</td><td>DVAES采用，但单VHH NRLS未采用</td><td>支持残基；NRLSS备选采用</td></tr></tbody></table>
+<p><img src='images/07_detail_image_anchor_reconciliation.png' alt='细节图直接残基与特异性扩展残基'></p><p class='muted'>颜色：紫红=重链细节图R796/N806/S808；青色=轻链细节图E812/S814；橙色=用于提升D9特异性的N795/L805。NRLSE选择R796/S808/E812和两个橙色扩展；N806、S814保留为支持/验证残基。</p>
+
+<h2>方案一：跨轻/重链边界的单VHH</h2><div class='verdict'><b>NRLSE最大Cα跨度23.14 Å，平均pLDDT 87.72。</b>在FcRH5 D1–D8与FcRH1/2/3/4/6共28个非D9比较域中无完整复现，也没有4/5近似复现；最高仅3/5。</div>
+<p><img src='images/02_single_VHH_integrated_NRLSE_anchor_surface.png' alt='跨轻重链NRLSE单VHH锚点'></p>
+<div class='grid'><div class='card a'><b>重链侧直接证据</b><p>R796负责电荷判别；S808提供极性/方向锁定。</p></div><div class='card b'><b>轻链侧直接证据</b><p>E812使单VHH必须真正跨入轻链足迹，而不是只复现NRLS。</p></div><div class='card'><b>特异性扩展</b><p>N795/L805降低D7、FcRH2、FcRH3等同源表面复现风险。</p></div></div>
+<p><b>N806与S814：</b>N806-L807-S808构成潜在N-糖基化序列，因此N806不能作为必须读取的裸侧链锚点；S814距离合适，但以S814替代E812的NRLSS在多模板刚性测试中总体碰撞更高，故作为备选/验证残基。</p>
+<h3>全域特异性</h3><p>红色为与D9相同，橙色为替换；最高风险域也只保留3/5。</p><p><img src='images/03_single_anchor_specificity_comparison.png' alt='NRLSE全域高风险比较'></p>
+<table><thead><tr><th>比较域</th><th>映射序列</th><th>相同数</th></tr></thead><tbody><tr><td>FcRH1_Ig3</td><td><code>SRFSE</code></td><td>3/5</td></tr><tr><td>FcRH2_Ig2</td><td><code>--LSE</code></td><td>3/5</td></tr><tr><td>FcRH2_Ig4</td><td><code>NSFSE</code></td><td>3/5</td></tr><tr><td>FcRH3_Ig5</td><td><code>NSFSE</code></td><td>3/5</td></tr><tr><td>FcRH3_Ig6</td><td><code>NIFSE</code></td><td>3/5</td></tr><tr><td>FcRH4_Ig1</td><td><code>HRLGE</code></td><td>3/5</td></tr><tr><td>FcRH5_D5</td><td><code>RRISE</code></td><td>3/5</td></tr><tr><td>FcRH6_Ig2</td><td><code>DRLPE</code></td><td>3/5</td></tr><tr><td>FcRH6_Ig3</td><td><code>NHLPE</code></td><td>3/5</td></tr><tr><td>FcRH2_Ig1</td><td><code>VFLSS</code></td><td>2/5</td></tr><tr><td>FcRH2_Ig3</td><td><code>KKLPE</code></td><td>2/5</td></tr><tr><td>FcRH3_Ig2</td><td><code>N-VSD</code></td><td>2/5</td></tr></tbody></table>
+
+<h2>CDR3专项覆盖：4个VHH模板</h2><p>模板包括本地FYT-499（9 aa）、实验结构<a href='https://www.rcsb.org/structure/1BZQ'>1BZQ</a>（14 aa）、实验结构<a href='https://www.rcsb.org/structure/6DBA'>6DBA</a>（17 aa）和本地FYT-500（17 aa）。搜索时只有CDR3原子能计入锚点覆盖；整VHH仅用于骨架和原子碰撞检查。</p>
+<p><img src='images/08_multi_CDR3_template_coverage.png' alt='不同CDR3长度VHH对NRLSE覆盖'></p>
+<table><thead><tr><th>模板</th><th>CDR3长度</th><th>CDR3序列</th><th>覆盖</th><th>CA冲突</th><th>&lt;1.8 Å原子</th></tr></thead><tbody><tr><td>FYT499_short</td><td>9 aa</td><td><code>NARHSGDDY</code></td><td>5/5</td><td>0</td><td>41</td></tr><tr><td>1BZQ_medium</td><td>14 aa</td><td><code>AAGGYELRDRTYGQ</code></td><td>5/5</td><td>0</td><td>19</td></tr><tr><td>6DBA_long_rep</td><td>17 aa</td><td><code>TLHRFCNTWSSLGTLNV</code></td><td>5/5</td><td>0</td><td>50</td></tr><tr><td>FYT500_long</td><td>17 aa</td><td><code>AADLYRCGTLLPVHFDY</code></td><td>5/5</td><td>0</td><td>10</td></tr></tbody></table>
+<div class='warn'><b>如何解读：</b>4个模板都能让CDR3覆盖5/5锚点，说明拓扑上可行；但未松弛原子重叠为10–50个。两个17 aa模板分别为50和10，证明<b>CDR3构象与长度同等重要</b>。这些姿态不能直接制造，只能用于筛选长度/拓扑。</div>
+<h3>修订后的CDR3建议</h3><ul><li>主设计库使用<b>14、15、16、17 aa</b>四档；同一长度至少保留2–3类环拓扑。</li><li>9 aa作为短环对照，不作为主库：虽可几何覆盖，但刚性侧链冲突高，且E812位于覆盖边缘。</li><li>优先让CDR3跨S808→E812并读取E812；CDR1/CDR2补充N795/R796/L805，而不是要求CDR3独自承担全部结合能。</li><li>每个候选至少做5个复合物预测，要求R796、S808、E812在多数模型中稳定接触，并进行糖链与侧链松弛。</li></ul>
+
+<h2>方案二：双VHH保持不变</h2><div class='grid'><div class='card a'><h3>VHH-A：NRL</h3><p>N795/R796/L805；高特异门控臂，无完整复现域。</p></div><div class='card b'><h3>VHH-B：DVAES</h3><p>D790/V791/A811/E812/S814；FcRH5-D7、FcRH2-Ig4、FcRH3-Ig5完整复现，必须维持中等亲和并由A门控。</p></div></div>
+<p><img src='images/04_dual_VHH_two_sites_surface.png' alt='双VHH两块表位'></p><p>两块中心相距16.72 Å、最近锚点11.9 Å、表面法向夹角104.9°。联合包络中VHH–VHH &lt;2.2 Å冲突为0，因此仍支持同时结合的拓扑可行性。</p>
+<p><img src='images/05_dual_VHH_steric_feasibility.png' alt='双VHH联合包络'></p><p><img src='images/06_dual_site_B_offtarget_comparison.png' alt='VHH-B脱靶表面'></p>
+
+<h2>对v2/v3结论的最终定位</h2><ul><li><b>v2表位：</b>适合作为“人FcRH5-D9特异性新VHH表面探索”，不适合作为“复刻Cevostamab结合位点”的首选。</li><li><b>v3原NRLS：</b>是可信的重链侧紧凑回退方案，但没有利用轻链细节图，不再列为单VHH第一选择。</li><li><b>v3修订NRLSE：</b>当前最符合“复用Cevostamab两侧信息、但缩小到一个VHH可覆盖范围”的方案。</li><li><b>双VHH NRL+DVAES：</b>目标不同，是两个独立分子的同时占位方案，不应与单VHH NRLSE混为一谈。</li></ul>
+
+<h2>实验优先级</h2><ol><li>用糖基化D9/ECD分别测试R796A、S808A、E812A和NRLSE组合突变；N806Q只作为糖依赖机制探针。</li><li>比较NRLSE、NRLSS、NRLS三类VHH库，要求NRLSE候选对E812A出现明确结合损失，证明真正跨入轻链足迹。</li><li>对FcRH5 D1–D8及FcRH1/2/3/4/6全域反筛，并做全长细胞FACS。</li><li>双VHH另行用顺序SPR/BLI验证同时占位，再测试A→B串联。</li></ol>
+
+<h2>文件说明</h2><ul><li><a href='structures/01_chainwise_anchor_design.pse'>01_chainwise_anchor_design.pse</a>：链拆分、NRLSE、细节图锚点和双位点场景。</li><li><a href='structures/03a_all_domains_single_NRLSE.pse'>03a_all_domains_single_NRLSE.pse</a>：29域NRLSE映射；旧<a href='structures/03a_all_domains_single_NRLS.pse'>NRLS PSE</a>保留作回退比较。</li><li><a href='structures/05_multi_CDR3_template_coverage.pse'>05_multi_CDR3_template_coverage.pse</a>：12个场景，覆盖3套锚点×4个CDR3模板。</li><li><a href='tables/02_all_domain_anchor_specificity.csv'>表02</a>：全部域映射；<a href='tables/07_multi_CDR3_template_coverage.csv'>表07</a>：CDR3专项数据；<a href='tables/08_detail_image_anchor_reconciliation.csv'>表08</a>：细节图逐残基核对。</li></ul>
+<footer class='muted'>本报告为图像约束的结构设计假设，不是实验表位确认。刚性碰撞数仅用于模板相对比较，不代表松弛后的最终能量。</footer></main></body></html>

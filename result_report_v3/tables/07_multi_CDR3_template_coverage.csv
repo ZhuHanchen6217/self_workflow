@@ -1,0 +1,13 @@
+﻿template,source,cdr3_sequence,cdr3_length_aa,cdr3_CA_span_A,patch,patch_positions,anchors_covered_by_CDR3_within_5A,anchor_total,all_anchors_covered,mean_anchor_min_distance_A,max_anchor_min_distance_A,whole_VHH_CA_clashes_lt_3.2A,whole_VHH_atom_count_lt_1.8A,whole_VHH_atom_count_lt_2.2A,anchor_distances_A
+FYT499_short,local AF3 model,NARHSGDDY,9,13.72,old_heavy_NRLS,795;796;805;808,4,4,YES,1.65,4.74,0,9,15,"{""795"": 0.09, ""796"": 0.11, ""805"": 1.68, ""808"": 4.74}"
+FYT499_short,local AF3 model,NARHSGDDY,9,13.72,integrated_NRLSS,795;796;805;808;814,5,5,YES,2.77,4.94,1,41,62,"{""795"": 2.34, ""796"": 2.05, ""805"": 0.69, ""808"": 3.83, ""814"": 4.94}"
+FYT499_short,local AF3 model,NARHSGDDY,9,13.72,integrated_NRLSE,795;796;805;808;812,5,5,YES,2.63,4.11,0,41,63,"{""795"": 2.89, ""796"": 2.67, ""805"": 0.29, ""808"": 3.17, ""812"": 4.11}"
+1BZQ_medium,RCSB PDB 1BZQ experimental,AAGGYELRDRTYGQ,14,14.04,old_heavy_NRLS,795;796;805;808,4,4,YES,0.96,1.58,0,31,36,"{""795"": 1.24, ""796"": 0.2, ""805"": 0.83, ""808"": 1.58}"
+1BZQ_medium,RCSB PDB 1BZQ experimental,AAGGYELRDRTYGQ,14,14.04,integrated_NRLSS,795;796;805;808;814,5,5,YES,2.83,3.72,1,30,40,"{""795"": 3.72, ""796"": 2.6, ""805"": 3.37, ""808"": 0.8, ""814"": 3.69}"
+1BZQ_medium,RCSB PDB 1BZQ experimental,AAGGYELRDRTYGQ,14,14.04,integrated_NRLSE,795;796;805;808;812,5,5,YES,1.75,3.14,0,19,31,"{""795"": 1.77, ""796"": 1.09, ""805"": 1.07, ""808"": 1.71, ""812"": 3.14}"
+6DBA_long_rep,RCSB PDB 6DBA experimental,TLHRFCNTWSSLGTLNV,17,14.32,old_heavy_NRLS,795;796;805;808,4,4,YES,0.83,1.44,0,42,66,"{""795"": 1.44, ""796"": 0.72, ""805"": 0.51, ""808"": 0.65}"
+6DBA_long_rep,RCSB PDB 6DBA experimental,TLHRFCNTWSSLGTLNV,17,14.32,integrated_NRLSS,795;796;805;808;814,5,5,YES,2.02,4.02,0,66,93,"{""795"": 4.02, ""796"": 1.84, ""805"": 0.53, ""808"": 0.83, ""814"": 2.88}"
+6DBA_long_rep,RCSB PDB 6DBA experimental,TLHRFCNTWSSLGTLNV,17,14.32,integrated_NRLSE,795;796;805;808;812,5,5,YES,1.6,3.84,0,50,74,"{""795"": 3.84, ""796"": 1.69, ""805"": 0.86, ""808"": 0.65, ""812"": 0.97}"
+FYT500_long,local AF3 model,AADLYRCGTLLPVHFDY,17,15.94,old_heavy_NRLS,795;796;805;808,4,4,YES,1.07,2.46,0,18,26,"{""795"": 0.52, ""796"": 0.69, ""805"": 0.62, ""808"": 2.46}"
+FYT500_long,local AF3 model,AADLYRCGTLLPVHFDY,17,15.94,integrated_NRLSS,795;796;805;808;814,5,5,YES,1.87,3.5,2,42,58,"{""795"": 3.31, ""796"": 1.01, ""805"": 0.33, ""808"": 1.19, ""814"": 3.5}"
+FYT500_long,local AF3 model,AADLYRCGTLLPVHFDY,17,15.94,integrated_NRLSE,795;796;805;808;812,5,5,YES,1.99,4.25,0,10,21,"{""795"": 1.66, ""796"": 1.02, ""805"": 1.74, ""808"": 1.31, ""812"": 4.25}"

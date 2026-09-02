@@ -1,0 +1,6 @@
+﻿detail_image_residue,image_side,v2,v3_original,v3_revised_single,dual_VHH
+R796,重链/紫链,未采用,NRLS采用,NRLSE采用,A臂采用
+N806,重链/紫链,未采用,证据保留，未作硬锚点,支持/糖基化环境，不作硬锚点,未作硬锚点
+S808,重链/紫链,未采用,NRLS采用,NRLSE采用,A臂不采用
+E812,轻链/蓝链,未采用,DVAES采用，但单VHH NRLS未采用,NRLSE采用,B臂采用
+S814,轻链/蓝链,未采用,DVAES采用，但单VHH NRLS未采用,支持残基；NRLSS备选采用,B臂采用

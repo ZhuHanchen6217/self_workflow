@@ -1,0 +1,7 @@
+﻿strategy,chain_origin,anchor_positions,anchor_sequence,max_CA_span_A,exact_offtargets,recommendation
+单VHH首选（修订）,跨重链/轻链足迹边界,N795;R796;L805;S808;E812,NRLSE,23.14,无,首选；同时读取两侧直接图像证据
+单VHH紧凑备选,重链/紫链侧,N795;R796;L805;S808,NRLS,17.53,无,若跨界覆盖失败时回退；不再作为第一方案
+单VHH跨界备选,跨重链/轻链足迹边界,N795;R796;L805;S808;S814,NRLSS,22.38,无,更紧凑但多模板刚性冲突总体高于NRLSE
+轻链侧独立VHH（不推荐）,轻链/蓝链侧,D790;V791;A811;E812;S814,DVAES,17.37,FcRH5_D7;FcRH2_Ig4;FcRH3_Ig5,不能单独承担选择性
+双VHH-A,重链/紫链侧,N795;R796;L805,NRL,7.84,无,高特异门控臂
+双VHH-B,轻链/蓝链侧,D790;V791;A811;E812;S814,DVAES,17.37,FcRH5_D7;FcRH2_Ig4;FcRH3_Ig5,中等亲和协同臂；必须由A门控

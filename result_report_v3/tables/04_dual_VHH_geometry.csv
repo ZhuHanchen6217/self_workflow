@@ -1,0 +1,9 @@
+﻿metric,value,unit,interpretation
+A/B anchor centroid distance,16.72,Å,两块锚点中心间距
+minimum anchor Cα distance,11.9,Å,两块表面不共享锚点
+surface-normal angle,104.9,degree,两个VHH从明显不同方向接近
+VHH–VHH atoms <2.2 Å,0,atoms,联合刚性姿态中无VHH间原子冲突
+VHH-A antigen atoms <1.8 Å,0,atoms,A臂无严重抗原冲突
+VHH-B antigen atoms <1.8 Å,2,atoms,B臂有2个未松弛冲突，需重设计
+A C-terminus to B N-terminus,64.12,Å,优选串联方向A→B
+B C-terminus to A N-terminus,70.93,Å,反向更远
