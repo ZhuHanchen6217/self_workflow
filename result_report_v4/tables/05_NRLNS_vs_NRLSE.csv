@@ -1,0 +1,8 @@
+﻿criterion,v4_purple_NRLNS,v3_integrated_NRLSE,interpretation
+anchors,N795/R796/L805/N806/S808,N795/R796/L805/S808/E812,share N795/R796/L805/S808 (4/5)
+detail-image support,retains all purple direct residues R796/N806/S808,retains purple R796/S808 and blue E812,NRLNS is stronger within one experimentally testable local patch; NRLSE integrates both predicted chain footprints
+maximum C-alpha span,17.53 A,23.14 A,NRLNS is 5.61 A more compact
+sequence specificity over 28 non-D9 domains,0 exact; 0 four-of-five,0 exact; 0 four-of-five,tie at the five-anchor sequence level
+four-template rigid CDR3 test,5/5 in all; mean anchor distance 1.10 A,5/5 in all; mean anchor distance 1.99 A,NRLNS has better compact CDR3 reach in this geometry test
+glycan uncertainty,N806-L807-S808 is an N-X-S sequon; occupancy unknown,does not require N806,NRLSE is the safer backup if N806 is occupied and blocks the peptide surface
+v4 recommendation,primary,parallel backup,"choose NRLNS on current geometry/specificity evidence, conditional on N806 accessibility"

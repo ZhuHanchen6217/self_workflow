@@ -1,0 +1,13 @@
+﻿patch,patch_positions,template,source,cdr3_sequence,cdr3_length_aa,cdr3_CA_span_A,anchors_covered_by_CDR3_within_5A,anchor_total,all_anchors_covered,mean_anchor_min_distance_A,max_anchor_min_distance_A,whole_VHH_CA_clashes_lt_3.2A,whole_VHH_atom_count_lt_1.8A,whole_VHH_atom_count_lt_2.2A,anchor_distances_A
+purple_NRLNS,795;796;805;806;808,FYT499_short,local AF3 model,NARHSGDDY,9,13.72,5,5,YES,1.61,4.26,0,17,28,"{""795"": 1.71, ""796"": 0.41, ""805"": 0.75, ""806"": 0.93, ""808"": 4.26}"
+blue_DVAES,790;791;811;812;814,FYT499_short,local AF3 model,NARHSGDDY,9,13.72,5,5,YES,2.05,3.58,0,22,31,"{""790"": 3.58, ""791"": 2.28, ""811"": 2.86, ""812"": 0.68, ""814"": 0.85}"
+v3_NRLSE_comparator,795;796;805;808;812,FYT499_short,local AF3 model,NARHSGDDY,9,13.72,5,5,YES,2.63,4.11,0,41,63,"{""795"": 2.89, ""796"": 2.67, ""805"": 0.29, ""808"": 3.17, ""812"": 4.11}"
+purple_NRLNS,795;796;805;806;808,1BZQ_medium,RCSB PDB 1BZQ experimental,AAGGYELRDRTYGQ,14,14.04,5,5,YES,1.13,3.18,0,28,35,"{""795"": 3.18, ""796"": 0.46, ""805"": 0.77, ""806"": 0.85, ""808"": 0.39}"
+blue_DVAES,790;791;811;812;814,1BZQ_medium,RCSB PDB 1BZQ experimental,AAGGYELRDRTYGQ,14,14.04,5,5,YES,1.74,2.73,0,21,29,"{""790"": 0.86, ""791"": 2.73, ""811"": 2.43, ""812"": 1.48, ""814"": 1.23}"
+v3_NRLSE_comparator,795;796;805;808;812,1BZQ_medium,RCSB PDB 1BZQ experimental,AAGGYELRDRTYGQ,14,14.04,5,5,YES,1.75,3.14,0,19,31,"{""795"": 1.77, ""796"": 1.09, ""805"": 1.07, ""808"": 1.71, ""812"": 3.14}"
+purple_NRLNS,795;796;805;806;808,6DBA_long_rep,RCSB PDB 6DBA experimental,TLHRFCNTWSSLGTLNV,17,14.32,5,5,YES,0.81,1.34,0,56,76,"{""795"": 0.57, ""796"": 0.51, ""805"": 0.8, ""806"": 0.82, ""808"": 1.34}"
+blue_DVAES,790;791;811;812;814,6DBA_long_rep,RCSB PDB 6DBA experimental,TLHRFCNTWSSLGTLNV,17,14.32,5,5,YES,1.07,1.36,0,52,67,"{""790"": 0.84, ""791"": 1.36, ""811"": 1.21, ""812"": 0.8, ""814"": 1.15}"
+v3_NRLSE_comparator,795;796;805;808;812,6DBA_long_rep,RCSB PDB 6DBA experimental,TLHRFCNTWSSLGTLNV,17,14.32,5,5,YES,1.6,3.84,0,50,74,"{""795"": 3.84, ""796"": 1.69, ""805"": 0.86, ""808"": 0.65, ""812"": 0.97}"
+purple_NRLNS,795;796;805;806;808,FYT500_long,local AF3 model,AADLYRCGTLLPVHFDY,17,15.94,5,5,YES,0.86,1.28,0,17,24,"{""795"": 0.71, ""796"": 1.05, ""805"": 0.55, ""806"": 0.7, ""808"": 1.28}"
+blue_DVAES,790;791;811;812;814,FYT500_long,local AF3 model,AADLYRCGTLLPVHFDY,17,15.94,5,5,YES,1.55,3.51,0,24,37,"{""790"": 3.51, ""791"": 1.43, ""811"": 1.05, ""812"": 0.66, ""814"": 1.13}"
+v3_NRLSE_comparator,795;796;805;808;812,FYT500_long,local AF3 model,AADLYRCGTLLPVHFDY,17,15.94,5,5,YES,1.99,4.25,0,10,21,"{""795"": 1.66, ""796"": 1.02, ""805"": 1.74, ""808"": 1.31, ""812"": 4.25}"

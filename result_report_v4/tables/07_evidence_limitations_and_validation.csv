@@ -1,0 +1,8 @@
+﻿evidence,supports,limitation
+user purple/heavy detail image,R796/N806/S808 direct predicted contacts,"company prediction image, not an experimental residue-level structure"
+user blue/light detail image,E812/S814 direct predicted contacts,"company prediction image, not an experimental residue-level structure"
+29-domain sequence mapping,relative uniqueness across FcRH5 D1-D9 and FcRH1/2/3/4/6 Ig domains,alignment-based mapped positions do not prove binding or exclude conformational effects
+predicted domain structures,mapped-anchor C-alpha RMSD and exposed-surface comparisons,"predicted static structures; no glycan, membrane orientation, dynamics or induced fit"
+four VHH templates,CDR3-only geometric reach for 9/14/17/17 aa loops,rigid placement; atom overlaps are not affinity estimates and require sequence design/relaxation
+UniProt local record Q96RD9,N383 is annotated glycosylated; N806 is not annotated,absence of annotation is not proof of non-occupancy; N806-L807-S808 remains a valid sequon
+Cevostamab patent experiments,D9 dependence; soluble FcRH3 weak binding; cell-surface family selectivity,no antigen residue-level epitope and no isolated FcRH5-D3 binding experiment

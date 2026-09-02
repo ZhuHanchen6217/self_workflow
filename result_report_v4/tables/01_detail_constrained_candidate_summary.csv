@@ -1,0 +1,3 @@
+﻿candidate,detail_image_direct_residues,selected_anchor_positions,motif,added_specificity_residues,max_CA_span_A,exact_non_D9_matches,n_minus_1_matches,max_FcRH5_D1_D8_identity,max_paralog_identity,recommendation
+purple_NRLNS,R796;N806;S808,N795;R796;L805;N806;S808,NRLNS,N795;L805,17.53,none,none,2/5,3/5,Primary D9-specific VHH target; verify N806 glycan occupancy/accessibility
+blue_DVAES,E812;S814,D790;V791;A811;E812;S814,DVAES,D790;V791;A811,17.37,FcRH5_D7;FcRH2_Ig4;FcRH3_Ig5,FcRH5_D8,5/5,5/5,Not suitable as sole specificity determinant; optional secondary/avidity arm only
